@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+
+	<extension
+         point="org.eclipse.ui.editors">
+      <editor
+            class="lc.kra.eclipse.wordfileeditor.editor.WordfileEditor"
+            default="true"
+            icon="icons/list.png"
+            id="lc.kra.eclipse.wordfileeditor.editor.WordfileEditor"
+            name="%editor.name"> 
+          <contentTypeBinding
+               contentTypeId="lc.kra.eclipse.wordfileeditor.editor.WordfileEditor.contentType">
+         </contentTypeBinding>
+      </editor>
+   </extension>
+   
+    <extension
+         point="org.eclipse.ui.editors.documentProviders">
+      <provider
+            class="lc.kra.eclipse.wordfileeditor.editor.WordfileDocumentProvider"
+            id="lc.kra.eclipse.wordfileeditor.editor.WordfileEditor.documentProvider"
+            inputTypes="org.eclipse.ui.IStorageEditorInput">
+      </provider>
+   </extension>
+   
+	<extension point="org.eclipse.core.contenttype.contentTypes">
+	   <content-type
+          base-type="org.eclipse.core.runtime.text"
+          describer="lc.kra.eclipse.wordfileeditor.editor.WordfileContentDescriber"
+          id="lc.kra.eclipse.wordfileeditor.editor.WordfileEditor.contentType"
+          name="%content-type.name"
+          priority="high">
+	   </content-type>
+	</extension>
+	
+   <extension
+         point="org.eclipse.ui.decorators">
+      <decorator
+            adaptable="true"
+            class="lc.kra.eclipse.wordfileeditor.decorator.WordfileDecorator"
+            id="lc.kra.eclipse.wordfileeditor.editor.WordfileEditor.decorator"
+            label="%decorator.label"
+            state="true">
+      </decorator>
+   </extension>^
+   
+   	<extension point="org.eclipse.ui.preferencePages">
+	 	<page id="lc.kra.eclipse.wordfileeditor.editor.WordfileEditor.preferencePage"
+	 		name="%page.name"
+	    category="org.eclipse.ui.preferencePages.GeneralTextEditor"
+	       class="lc.kra.eclipse.wordfileeditor.preferences.WordfilePreferencePage">
+	   	</page>
+	</extension>
+	
+   <extension point="org.eclipse.ui.propertyPages">
+      <page class="lc.kra.eclipse.wordfileeditor.properties.WordfilePropertyPage"
+            id="lc.kra.eclipse.wordfileeditor.editor.WordfileEditor.propertyPage"
+            name="%page.name.0">
+         <enabledWhen>      
+			<instanceof
+              	value="org.eclipse.core.resources.IFile">
+        	</instanceof>
+         </enabledWhen>
+      </page>
+   </extension>
+</plugin>
